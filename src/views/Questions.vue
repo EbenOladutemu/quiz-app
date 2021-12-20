@@ -27,7 +27,7 @@
           >
         </div>
       </div>
-      <button type="submit" @click.prevent="submit">Submit</button>
+      <button class="btn" type="submit" @click.prevent="submit">Submit</button>
     </form>
   </div>
 </template>

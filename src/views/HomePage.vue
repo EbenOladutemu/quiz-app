@@ -8,7 +8,7 @@
       Take this quick and simple quiz and test your knowledge on Venture Capital.<br>
       Click on the submit button at the bottom of the next page to get your results. Goodluck!
     </h2>
-    <router-link to="questions">Start Quiz</router-link>
+    <router-link class="btn" to="questions">Start Quiz</router-link>
   </div>
 </template>
 
