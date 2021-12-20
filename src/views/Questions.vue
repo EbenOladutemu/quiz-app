@@ -6,7 +6,9 @@
         v-for="(questionGroup, questionIndex) in data.questions"
         :key="questionGroup"
       >
-        <p>{{ questionIndex + 1 }}. {{ questionGroup.question }}</p>
+        <p :class="{'text-danger' : submitted && value == '' }">
+          {{ questionIndex + 1 }}. {{ questionGroup.question }}
+        </p>
         <div
           v-for="(option, optionIndex) in questionGroup.options"
           :key="option"
@@ -16,15 +18,16 @@
             type="radio"
             :name="'ques' + questionIndex"
             :id="'ques' + (questionIndex + 1).toString() + 'opt' + (optionIndex + 1)"
-            
           />
           <label
             :for="'ques' + (questionIndex + 1).toString() + 'opt' + (optionIndex + 1)"
-            @click="selectAnswer($event)"
-            >{{ option }}</label
+            @click="selectAnswer(questionIndex, questionGroup, option)"
+            >{{ option }}
+          </label
           >
         </div>
       </div>
+      <button type="submit" @click.prevent="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -36,13 +39,28 @@
       return {
         data,
         value: '',
+        submitted: false
       };
     },
     methods: {
-      selectAnswer(e) {
-        console.log(e.target.control.id, e.target.textContent);
+      selectAnswer(i, questionGroup, option) {
+        localStorage.setItem(i + 1, questionGroup.question + ' - ' + option);
+        console.log([i + 1, questionGroup.question, option]);
+        this.value = option;
+      },
+      submit() {
+        this.submitted = true
+        this.$router.push('/result');
       }
     },
+    mounted() {
+      window.addEventListener('beforeunload', (event) => {
+        event.returnValue = 'You have not completed the quiz. Are you sure you want to leave?';
+      });
+    },
+    updated() {
+      console.log(this.value);
+    }
   };
 </script>
 
@@ -50,7 +68,7 @@
   .question-group {
     margin-bottom: 2rem;
     p {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
     label {
       font-size: 1.2rem;
@@ -74,5 +92,8 @@
   .option {
     padding: 0.5rem;
     padding-left: 0;
+  }
+  .text-danger {
+    color: red;
   }
 </style>

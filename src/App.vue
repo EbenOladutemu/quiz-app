@@ -14,4 +14,7 @@
   box-sizing: border-box;
 }
 
+.text-center {
+  text-align: center;
+}
 </style>
