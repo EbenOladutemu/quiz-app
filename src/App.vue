@@ -9,8 +9,9 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #3CAC70;
+  color: #000;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 </style>
