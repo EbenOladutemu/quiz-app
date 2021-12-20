@@ -20,6 +20,7 @@
           />
           <label
             :for="'ques' + (questionIndex + 1).toString() + 'opt' + (optionIndex + 1)"
+            @click="selectAnswer($event)"
             >{{ option }}</label
           >
         </div>
@@ -37,6 +38,11 @@
         value: '',
       };
     },
+    methods: {
+      selectAnswer(e) {
+        console.log(e.target.control.id, e.target.textContent);
+      }
+    },
   };
 </script>
 
@@ -50,6 +56,19 @@
       font-size: 1.2rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
+    }
+  }
+  input[type='radio' i] {
+    display: none;
+    width: fit-content;
+    &:checked + label {
+      background: #3CAC70;
+      text-align: center;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-size: 1.2rem;
+      line-height: 2;
     }
   }
   .option {
