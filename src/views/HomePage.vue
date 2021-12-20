@@ -20,5 +20,34 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 1.5rem;
+}
 
+h2 {
+  font-size: 1rem;
+}
+
+h1, h2 {
+  font-weight: 400;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (min-width: 991px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
 </style>
