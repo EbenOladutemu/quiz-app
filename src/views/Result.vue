@@ -17,11 +17,20 @@
 </template>
 
 <script>
-import { resultMixin } from './../data/mixins';
 export default {
-  mixins: [resultMixin],
+  data() {
+    return {
+      results: []
+    }
+  },
   mounted() {
+    document.title = 'Homepage'
     window.scrollTo(0, 0);
+    let i = 1
+    while (i <= 10) {
+      this.results.push(localStorage.getItem(parseInt(i)))
+      i++;
+    }
   }
 }
 </script>

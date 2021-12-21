@@ -16,6 +16,9 @@
 // @ is an alias to /src
 export default {
   name: 'Home',
+  mounted() {
+    document.title = 'Homepage'
+  }
 }
 </script>
 

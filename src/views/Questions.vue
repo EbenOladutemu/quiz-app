@@ -37,13 +37,12 @@
 
 <script>
   import data from './../data/data.json';
-  import { resultMixin } from './../data/mixins';
   export default {
-    mixins: [resultMixin],
     data() {
       return {
         data,
-        submitted: false
+        submitted: false,
+        results: []
       };
     },
     methods: {
@@ -53,11 +52,17 @@
         localStorage.setItem(i + 1, questionGroup.question + ' - ' + option);
       },
       submit() {
-        this.submitted = true;
-        this.$router.push({ name: 'Result' });
+        this.submitted = true
+        let i = 1
+        while (i <= 10) {
+          this.results.push(localStorage.getItem(parseInt(i)))
+          i++;
+        }
+        // this.$router.push({ name: 'Result' });
       }
     },
     mounted() {
+      document.title = 'Questions'
       window.addEventListener('beforeunload', (event) => {
         event.returnValue = 'You have not completed the quiz. Are you sure you want to leave?';
       });
