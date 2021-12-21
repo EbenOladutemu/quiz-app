@@ -5,6 +5,9 @@
 </template>
 
 <style lang="scss">
+html {
+  scroll-behavior: smooth;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -14,8 +17,16 @@
   box-sizing: border-box;
 }
 
+.p-1 {
+  padding: 1rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-danger {
+  color: red;
 }
 
 .btn {
@@ -24,8 +35,6 @@
   padding: 0.75rem;
   border-radius: 5px;
   text-decoration: none;
-  border: 1px solid #FBBB07;
-  cursor: pointer;
   &:hover {
     opacity: 0.85;
   }

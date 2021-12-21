@@ -1,9 +1,9 @@
 <template>
-  <div style="padding: 1rem">
-    <div class="text-center">
-      <h1>Your Results are here!</h1>
+  <div class="p-1">
+    <div class="text-center heading">
+      <h1>Your answers were submitted successfully</h1>
       <p class="score">70%</p>
-      <p style="font-size: 1.2rem">You 7 out of 10 questions</p>
+      <p>You got 7 out of 10 questions</p>
     </div>
     <div class="result" v-for="(result, i) in results" :key="result">
       <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
@@ -17,24 +17,21 @@
 </template>
 
 <script>
+import { resultMixin } from './../data/mixins';
 export default {
-  data() {
-    return {
-      results: []
-    }
-  },
+  mixins: [resultMixin],
   mounted() {
-    let i = 1
-    while (i <= 10) {
-      console.log(localStorage.getItem(parseInt(i)))
-      this.results.push(localStorage.getItem(parseInt(i)))
-      i++;
-    }
+    window.scrollTo(0, 0);
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.heading {
+  p:last-child {
+    font-size: 1.2rem
+  }
+}
 .result {
   p:first-child {
     margin-bottom: 0.5rem;

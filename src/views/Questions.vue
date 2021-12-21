@@ -1,12 +1,13 @@
 <template>
   <div>
+    <h1>Questions</h1>
     <form action="">
       <div
         class="question-group"
         v-for="(questionGroup, questionIndex) in data.questions"
         :key="questionGroup"
       >
-        <p :class="{'text-danger' : submitted && value == '' }">
+        <p :class="{'text-danger' : results[questionIndex] == null && submitted }">
           {{ questionIndex + 1 }}. {{ questionGroup.question }}
         </p>
         <div
@@ -27,39 +28,44 @@
           >
         </div>
       </div>
-      <button class="btn" type="submit" @click.prevent="submit">Submit</button>
+      <button class="btn btn-result" type="submit" @click.prevent="submit">
+        Get Result
+      </button>
     </form>
   </div>
 </template>
 
 <script>
   import data from './../data/data.json';
+  import { resultMixin } from './../data/mixins';
   export default {
+    mixins: [resultMixin],
     data() {
       return {
         data,
-        value: '',
         submitted: false
       };
     },
     methods: {
       selectAnswer(i, questionGroup, option) {
+        this.submitted = false;
+        this.results = [];
         localStorage.setItem(i + 1, questionGroup.question + ' - ' + option);
-        console.log([i + 1, questionGroup.question, option]);
-        this.value = option;
       },
       submit() {
-        this.submitted = true
-        this.$router.push('/result');
+        this.submitted = true;
+        this.$router.push({ name: 'Result' });
       }
     },
     mounted() {
       window.addEventListener('beforeunload', (event) => {
         event.returnValue = 'You have not completed the quiz. Are you sure you want to leave?';
       });
+      if (location.reload) {
+        localStorage.clear();
+      }
     },
     updated() {
-      console.log(this.value);
     }
   };
 </script>
@@ -67,6 +73,7 @@
 <style lang="scss" scoped>
   .question-group {
     margin-bottom: 2rem;
+    border-bottom: 1px solid #ebe8e8;
     p {
       font-size: 1.5rem;
     }
@@ -92,8 +99,15 @@
   .option {
     padding: 0.5rem;
     padding-left: 0;
+    width: fit-content;
+    &:last-child {
+      margin-bottom: 1rem;
+    }
   }
-  .text-danger {
-    color: red;
+
+  .btn-result {
+    font-size: 1rem;
+    border: 1px solid #FBBB07;
+    cursor: pointer;
   }
 </style>
