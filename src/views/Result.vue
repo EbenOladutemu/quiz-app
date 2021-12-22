@@ -7,10 +7,10 @@
     </div>
     <div class="result" v-for="(result, i) in results" :key="result">
       <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
-      <p>
+      <div>
         Your answer -
         <strong>{{ result.split('- ')[1].split('Answer ')[0] }} </strong>
-        <span
+        <p
           class="text-success"
           v-if="
             result
@@ -20,14 +20,14 @@
           "
         >
           Correct!
-        </span>
-        <span class="text-danger" v-else>
-          Incorrect <br /><br />
-          Correct Answer - {{ result.split('- ')[1].split('Answer ')[1] }}
-        </span>
-      </p>
+        </p>
+        <div v-else>
+          <p class="text-danger incorrect">Incorrect</p>
+          <p>Correct Answer - {{ result.split('- ')[1].split('Answer ')[1] }}</p>
+        </div>
+      </div>
     </div>
-    <div>
+    <div class="retake">
       <router-link class="btn" to="questions">Retake Quiz</router-link>
     </div>
   </div>
@@ -66,12 +66,16 @@
       margin-bottom: 0.5rem;
       font-size: 1.5rem;
     }
-    span,
     p:last-child {
       font-size: 1.1rem;
       margin-top: 0.5rem;
       margin-bottom: 1.5rem;
     }
+  }
+
+  .incorrect {
+    font-size: 1.1rem !important;
+    margin-top: 0.5rem;
   }
 
   .score {
@@ -83,7 +87,7 @@
     margin: auto;
   }
 
-  .btn {
-    margin-top: 2rem;
+  .retake {
+    margin-top: 3rem;
   }
 </style>
