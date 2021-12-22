@@ -2,14 +2,18 @@
   <div class="p-1">
     <div class="text-center heading">
       <h1>Your answers were submitted successfully</h1>
-      <p class="score">70%</p>
-      <p>You got 7 out of 10 questions</p>
+      <p class="score">{{ score }}%</p>
+      <p>You got {{ score/10 }} out of 10 questions</p>
     </div>
     <div class="result" v-for="(result, i) in results" :key="result">
-      <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
+      <p>
+        {{ i + 1 }}. {{ result.split(' -')[0] }}
+      </p>
       <span>
         Your answer - <strong>{{ result.split(' -')[1] }}. </strong>
-        <span>Correct!/Wrong</span>
+        <span>
+          Correct!/Wrong
+        </span>
       </span>
       <p>Correct Answer - </p>
     </div>
@@ -20,7 +24,8 @@
 export default {
   data() {
     return {
-      results: []
+      results: [],
+      score: 0
     }
   },
   mounted() {
@@ -31,6 +36,7 @@ export default {
       this.results.push(localStorage.getItem(parseInt(i)))
       i++;
     }
+    this.score = localStorage.getItem('score');
   }
 }
 </script>
