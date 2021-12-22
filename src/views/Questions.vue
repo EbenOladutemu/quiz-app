@@ -42,7 +42,8 @@
       return {
         data,
         submitted: false,
-        results: []
+        results: [],
+        score: 0
       };
     },
     methods: {
@@ -57,6 +58,9 @@
           '. Answer ' +
           questionGroup.answer
         );
+        if (selectedOption === questionGroup.answer) {
+          this.score += 10;
+        }
       },
       submit() {
         this.submitted = true
@@ -64,6 +68,12 @@
         while (i <= 10) {
           this.results.push(localStorage.getItem(parseInt(i)))
           i++;
+        }
+        if (this.results.includes(null)) {
+          alert ('Please answer all the questions');
+        } else {
+          localStorage.setItem('score', this.score);
+          this.$router.push({ name: 'Result' });
         }
       }
     },
