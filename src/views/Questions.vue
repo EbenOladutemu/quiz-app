@@ -28,8 +28,8 @@
           >
         </div>
       </div>
-      <button class="btn btn-result" type="submit" @click.prevent="submit">
-        Get Result
+      <button class="btn btn-result" type="submit" @click.prevent="submit" :disabled="loading">
+        {{ loading ? 'Getting your result...' : 'Get result' }}
       </button>
     </form>
   </div>
@@ -42,6 +42,7 @@
       return {
         data,
         submitted: false,
+        loading: false,
         results: [],
         score: 0
       };
@@ -72,8 +73,11 @@
         if (this.results.includes(null)) {
           alert ('Please answer all the questions');
         } else {
+          this.loading = true;
           localStorage.setItem('score', this.score);
-          this.$router.push({ name: 'Result' });
+          setTimeout(() => {
+            this.$router.push({ name: 'Result' });
+          }, 3000);
         }
       }
     },

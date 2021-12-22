@@ -27,7 +27,9 @@
         </span>
       </p>
     </div>
-    <router-link class="btn" to="questions">Retake Quiz</router-link>
+    <div>
+      <router-link class="btn" to="questions">Retake Quiz</router-link>
+    </div>
   </div>
 </template>
 
@@ -79,5 +81,9 @@
     width: fit-content;
     border-radius: 50%;
     margin: auto;
+  }
+
+  .btn {
+    margin-top: 2rem;
   }
 </style>

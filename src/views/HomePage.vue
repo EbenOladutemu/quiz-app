@@ -5,7 +5,7 @@
       Do you want to know more?
     </h1>
     <h2>
-      Take this quick and simple quiz and test your knowledge on Venture Capital.<br>
+      Take this quick and simple quiz and test your knowledge on basic concepts of Venture Capital.<br>
       Click on the button at the bottom of the next page to get your result. Goodluck!
     </h2>
     <router-link class="btn" to="questions">Start Quiz</router-link>
