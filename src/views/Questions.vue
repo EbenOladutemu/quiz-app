@@ -11,19 +11,19 @@
           {{ questionIndex + 1 }}. {{ questionGroup.question }}
         </p>
         <div
-          v-for="(option, optionIndex) in questionGroup.options"
-          :key="option"
+          v-for="(selectedOption, selectedOptionIndex) in questionGroup.options"
+          :key="selectedOption"
           class="option"
         >
           <input
             type="radio"
             :name="'ques' + questionIndex"
-            :id="'ques' + (questionIndex + 1).toString() + 'opt' + (optionIndex + 1)"
+            :id="'ques' + (questionIndex + 1).toString() + 'opt' + (selectedOptionIndex + 1)"
           />
           <label
-            :for="'ques' + (questionIndex + 1).toString() + 'opt' + (optionIndex + 1)"
-            @click="selectAnswer(questionIndex, questionGroup, option)"
-            >{{ option }}
+            :for="'ques' + (questionIndex + 1).toString() + 'opt' + (selectedOptionIndex + 1)"
+            @click="selectAnswer(questionIndex, questionGroup, selectedOption)"
+            >{{ selectedOption }}
           </label
           >
         </div>
@@ -46,10 +46,17 @@
       };
     },
     methods: {
-      selectAnswer(i, questionGroup, option) {
+      selectAnswer(i, questionGroup, selectedOption) {
         this.submitted = false;
         this.results = [];
-        localStorage.setItem(i + 1, questionGroup.question + ' - ' + option);
+        let questionNumber = i + 1;
+        localStorage.setItem(
+          questionNumber,
+          questionGroup.question +
+          ' - ' + selectedOption +
+          '. Answer ' +
+          questionGroup.answer
+        );
       },
       submit() {
         this.submitted = true
@@ -58,7 +65,6 @@
           this.results.push(localStorage.getItem(parseInt(i)))
           i++;
         }
-        // this.$router.push({ name: 'Result' });
       }
     },
     mounted() {
@@ -69,8 +75,6 @@
       if (location.reload) {
         localStorage.clear();
       }
-    },
-    updated() {
     }
   };
 </script>
@@ -81,6 +85,7 @@
     border-bottom: 1px solid #ebe8e8;
     p {
       font-size: 1.5rem;
+      font-weight: 600;
     }
     label {
       font-size: 1.2rem;

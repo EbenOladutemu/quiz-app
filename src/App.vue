@@ -10,11 +10,11 @@ html {
 }
 #app {
   font-family: Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #000;
   padding: 1rem;
   box-sizing: border-box;
+  letter-spacing: 0.3px;
 }
 
 .p-1 {
@@ -23,6 +23,10 @@ html {
 
 .text-center {
   text-align: center;
+}
+
+.text-success {
+  color: #3CAC70;
 }
 
 .text-danger {

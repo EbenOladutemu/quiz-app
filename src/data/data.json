@@ -2,7 +2,7 @@
   "questions": [
     {
       "question": "A Venture Capital firm usually has more than one VC fund",
-      "id": "question1",
+      "answer": "True",
       "options": [
         "True",
         "False",
@@ -11,6 +11,7 @@
     },
     {
       "question": "What is the main difference between equity and debt?",
+      "answer": "Equity represents ownership",
       "options": [
         "Equity is more than debt",
         "Debt represents steady earnings",
@@ -19,6 +20,7 @@
     },
     {
       "question": "Just as startups have a pitch deck to pitch to numerous VCs, VCs use a pitch deck to pitch to their investors",
+      "answer": "True",
       "options": [
         "True",
         "False",
@@ -27,14 +29,16 @@
     },
     {
       "question": "When was the largest burst of activity in the venture capital industry witnessed?",
+      "answer": "In early 2000s",
       "options": [
         "In the 1960s",
         "In early 2000s",
-        "In the late 2000s "
+        "In the late 2000s"
       ]
     },
     {
       "question": "The fundamental difference between angel investors and VCs is the size of their checks",
+      "answer": "False",
       "options": [
         "True",
         "False",
@@ -43,6 +47,7 @@
     },
     {
       "question": "What is meant by 'exit strategy'?",
+      "answer": "How the target company is planning to liquidate all investors and give them a return for their investment",
       "options": [
         "How the target company is planning to liquidate all investors and give them a return for their investment",
         "How the target company plans to fire key personnel",
@@ -51,6 +56,7 @@
     },
     {
       "question": "VCs prefer startups with very high margins because VCs make their money by sharing in the startup's profits.",
+      "answer": "False",
       "options": [
         "True",
         "False",
@@ -59,6 +65,7 @@
     },
     {
       "question": "Which of the following is not a characteristic of venture capital investments?",
+      "answer": "Low Risk",
       "options": [
         "Low Risk",
         "Long term scope",
@@ -67,6 +74,7 @@
     },
     {
       "question": "To ensure they get the maximum amount of equity, most VC firms insist on being the only investor in a round of investing.",
+      "answer": "False",
       "options": [
         "True",
         "False",
@@ -75,6 +83,7 @@
     },
     {
       "question": "If a founder is offering 40% of her startup for $8M, at what price she is valuing her company, today?",
+      "answer": "$12M",
       "options": [
         "$10M",
         "$8M",
