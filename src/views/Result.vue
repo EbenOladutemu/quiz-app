@@ -7,7 +7,7 @@
     </div>
     <div class="result" v-for="(result, i) in results" :key="result">
       <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
-      <span>
+      <p>
         Your answer -
         <strong>{{ result.split('- ')[1].split('Answer ')[0] }} </strong>
         <span
@@ -25,9 +25,9 @@
           Incorrect <br /><br />
           Correct Answer - {{ result.split('- ')[1].split('Answer ')[1] }}
         </span>
-      </span>
-      <!-- <p></p> -->
+      </p>
     </div>
+    <router-link class="btn" to="questions">Retake Quiz</router-link>
   </div>
 </template>
 
@@ -59,6 +59,7 @@
     }
   }
   .result {
+    border-bottom: 1px solid #ebe8e8;
     p:first-child {
       margin-bottom: 0.5rem;
       font-size: 1.5rem;
@@ -67,6 +68,7 @@
     p:last-child {
       font-size: 1.1rem;
       margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
     }
   }
 
