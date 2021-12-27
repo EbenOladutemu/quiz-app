@@ -89,6 +89,9 @@
       if (location.reload) {
         localStorage.clear();
       }
+    },
+    updated() {
+      console.log(this.loading);
     }
   };
 </script>

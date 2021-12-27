@@ -42,7 +42,7 @@
       };
     },
     mounted() {
-      document.title = 'Homepage';
+      document.title = 'Result';
       window.scrollTo(0, 0);
       let i = 1;
       while (i <= 10) {
