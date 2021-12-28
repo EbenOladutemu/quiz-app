@@ -43,8 +43,7 @@
         data,
         submitted: false,
         loading: false,
-        results: [],
-        score: 0
+        results: []
       };
     },
     methods: {
@@ -59,9 +58,6 @@
           '. Answer ' +
           questionGroup.answer
         );
-        if (selectedOption === questionGroup.answer) {
-          this.score += 10;
-        }
       },
       submit() {
         this.submitted = true

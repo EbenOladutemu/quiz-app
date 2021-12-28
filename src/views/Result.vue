@@ -2,8 +2,8 @@
   <div class="p-1">
     <div class="text-center heading">
       <h1>Your answers were submitted successfully</h1>
-      <p class="score">{{ score }}%</p>
-      <p>You got {{ score / 10 }} out of 10 questions</p>
+      <p class="score">{{ score * 10 }}%</p>
+      <p>You got {{ score }} out of 10 questions</p>
     </div>
     <div class="result" v-for="(result, i) in results" :key="result">
       <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
@@ -38,6 +38,7 @@
     data() {
       return {
         results: [],
+        scoreArray: [],
         score: 0,
       };
     },
@@ -49,7 +50,14 @@
         this.results.push(localStorage.getItem(parseInt(i)));
         i++;
       }
-      this.score = localStorage.getItem('score');
+      this.results.forEach(element => {
+        let correctAnswer = element.split('- ')[1].split('Answer ')[0];
+        let selectedOption = element.split('- ')[1].split('Answer ')[1]
+        if (correctAnswer.includes(selectedOption)) {
+          this.scoreArray.push(element)
+        }
+      });
+      this.score = this.scoreArray.length;
     },
   };
 </script>
