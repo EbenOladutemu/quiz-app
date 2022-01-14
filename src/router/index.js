@@ -9,8 +9,8 @@ const routes = [
   },
   {
     path: '/test',
-    name: 'Message',
-    component: () => import('../components/Message.vue')
+    name: 'TodoApp',
+    component: () => import('../components/TodoApp.vue')
   },
   {
     path: '/questions',
