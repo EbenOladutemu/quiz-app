@@ -70,7 +70,6 @@
           alert ('Please answer all the questions');
         } else {
           this.loading = true;
-          localStorage.setItem('score', this.score);
           setTimeout(() => {
             this.$router.push({ name: 'Result' });
           }, 3000);
