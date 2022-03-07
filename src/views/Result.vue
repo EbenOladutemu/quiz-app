@@ -1,15 +1,20 @@
 <template>
   <div class="p-1">
+
     <div class="text-center heading">
       <h1>Your answers were submitted successfully</h1>
       <p class="score">{{ score * 10 }}%</p>
       <p>You got {{ score }} out of 10 questions</p>
     </div>
+
     <div class="result" v-for="(result, i) in results" :key="result">
+
       <p>{{ i + 1 }}. {{ result.split(' -')[0] }}</p>
+
       <div>
         Your answer -
         <strong>{{ result.split('- ')[1].split('Answer ')[0] }} </strong>
+
         <p
           class="text-success"
           v-if="
@@ -21,12 +26,15 @@
         >
           Correct!
         </p>
+
         <div v-else>
           <p class="text-danger incorrect">Incorrect</p>
           <p>Correct Answer - {{ result.split('- ')[1].split('Answer ')[1] }}</p>
         </div>
+
       </div>
     </div>
+
     <div class="retake">
       <router-link class="btn" to="questions">Retake Quiz</router-link>
     </div>
@@ -44,12 +52,17 @@
     },
     mounted() {
       document.title = 'Result';
+
       window.scrollTo(0, 0);
+
       let i = 1;
+
       while (i <= 10) {
         this.results.push(localStorage.getItem(parseInt(i)));
         i++;
       }
+
+      // Get correct answer and selected option by splitting each result
       this.results.forEach(element => {
         let correctAnswer = element.split('- ')[1].split('Answer ')[0];
         let selectedOption = element.split('- ')[1].split('Answer ')[1]
@@ -57,6 +70,7 @@
           this.scoreArray.push(element)
         }
       });
+
       this.score = this.scoreArray.length;
     },
   };

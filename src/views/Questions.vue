@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Modal/>
     <h1>Questions</h1>
     <form action="">
       <div
@@ -10,6 +11,8 @@
         <p :class="{'text-danger' : results[questionIndex] == null && submitted }">
           {{ questionIndex + 1 }}. {{ questionGroup.question }}
         </p>
+
+        <!-- Iterate over each question and dynamically get ids and names -->
         <div
           v-for="(selectedOption, selectedOptionIndex) in questionGroup.options"
           :key="selectedOption"
@@ -37,7 +40,11 @@
 
 <script>
   import data from './../data/data.json';
+  import Modal from '@/components/Modal'
   export default {
+    components:{
+      Modal
+    },
     data() {
       return {
         data,
@@ -49,8 +56,13 @@
     methods: {
       selectAnswer(i, questionGroup, selectedOption) {
         this.submitted = false;
+
         this.results = [];
+
         let questionNumber = i + 1;
+
+        // Store each selected answer in local storage. If user selects another option,
+        // selected answer is overriden in local storage
         localStorage.setItem(
           questionNumber,
           questionGroup.question +
@@ -61,11 +73,13 @@
       },
       submit() {
         this.submitted = true
+
         let i = 1
         while (i <= 10) {
           this.results.push(localStorage.getItem(parseInt(i)))
           i++;
         }
+
         if (this.results.includes(null)) {
           alert ('Please answer all the questions');
         } else {
@@ -78,9 +92,11 @@
     },
     mounted() {
       document.title = 'Questions'
+
       window.addEventListener('beforeunload', (event) => {
         event.returnValue = 'You have not completed the quiz. Are you sure you want to leave?';
       });
+
       if (location.reload) {
         localStorage.clear();
       }
