@@ -40,9 +40,5 @@ html {
   &:hover {
     opacity: 0.85;
   }
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
 }
 </style>

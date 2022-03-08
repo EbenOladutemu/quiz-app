@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal/>
+    <Modal v-if="showModal"/>
     <h1>Questions</h1>
     <form action="">
       <div
@@ -50,6 +50,7 @@
         data,
         submitted: false,
         loading: false,
+        showModal: false,
         results: []
       };
     },
@@ -81,7 +82,7 @@
         }
 
         if (this.results.includes(null)) {
-          alert ('Please answer all the questions');
+          this.showModal = !this.showModal;
         } else {
           this.loading = true;
           setTimeout(() => {
@@ -144,5 +145,9 @@
     font-size: 1rem;
     border: 1px solid #FBBB07;
     cursor: pointer;
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
   }
 </style>
